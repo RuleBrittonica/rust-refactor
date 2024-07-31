@@ -22,9 +22,7 @@ mod rebuilder;
 pub mod refactor;
 pub mod util;
 
-pub use analysis::{
-    AnalysisData
-};
+pub use analysis::AnalysisData;
 
 pub use refactor::{
     Response,
@@ -36,6 +34,4 @@ pub use refactor::{
     restore_fn_lifetime
 };
 
-pub use util::{
-    identify_id
-};
+pub use util::identify_id;
