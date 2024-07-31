@@ -5,9 +5,12 @@ version = "0.0.1"
 authors = ["Garming <garming_sam@outlook.com>"]
 
 [dependencies]
-csv = "0.14.2"
+csv = "1.3.0"
+getopts = "0.2.21"
+log = "0.4.22"
+
 
 [dependencies.strings]
 strings = "0.0.1"
-git = "https://github.com/nrc/strings.rs.git"
-rev = "b7f37c4545b7dba24fb28161cd9c405fae978be4"
+git = "https://github.com/RuleBrittonica/strings.rs"
+rev = "6fb5f21c72ad0de6a6a9cadef093fc5e87ac6326"

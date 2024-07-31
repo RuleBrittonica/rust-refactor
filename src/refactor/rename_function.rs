@@ -37,7 +37,7 @@ pub fn rename_function(input_file: &str,
             filename = file.clone();
         }
     }
-    
+
     match compiler::run_resolution(input_file.to_owned(), None, None, RefactorType::Function,
                                   String::from(new_name), node, false) {
         Ok(()) => {},
@@ -89,10 +89,12 @@ pub fn rename_function(input_file: &str,
     let output = refactor::rename_dec_and_ref(new_name, rename_var, dec_map, ref_map);
 
     //println!("{:?}", output);
-    try!(compiler::check_reduced_graph(String::from(input_file),
-                             output.iter().map(|(x,y)|
-                             (x.clone(), y.clone())).collect(),
-                             String::from(new_name), node));
+    compiler::check_reduced_graph(
+        String::from(input_file),
+        output.iter().map(|(x, y)| (x.clone(), y.clone())).collect(),
+        String::from(new_name),
+        node
+    )?;
 
     Ok(output)
 }

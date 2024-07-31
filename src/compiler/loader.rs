@@ -21,7 +21,7 @@ impl FileLoader for ReplaceLoader {
         }
 
         let mut src = String::new();
-        try!(File::open(path)).read_to_string(&mut src).map(move |_| src)
+        (File::open(path)).read_to_string(&mut src).map(move |_| src)?
     }
 }
 

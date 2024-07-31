@@ -19,7 +19,7 @@ pub fn rename_variable(input_file: &str,
                        -> Result<HashMap<String, String>, Response> {
     let dec_map = &analyzed_data.var_map;
     let ref_map = &analyzed_data.var_ref_map;
-    
+
     let mut filename = String::from(input_file);
     if let Some(decl) = dec_map.get(rename_var) {
         if let Some(file) = decl.get("file_name") {
@@ -84,8 +84,8 @@ pub fn rename_variable(input_file: &str,
                                                           node, true) {
                                 Ok(()) => {
                                     debug!("Unexpected success!");
-                                    // Check for conflicts 
-                                    return Err(Response::Conflict); 
+                                    // Check for conflicts
+                                    return Err(Response::Conflict);
                                 },
                                 Err(_) => { debug!("Expected failure!");}
                             }
@@ -111,10 +111,11 @@ pub fn rename_variable(input_file: &str,
 
     let output = refactor::rename_dec_and_ref(new_name, rename_var, dec_map, ref_map);
 
-    try!(compiler::check_reduced_graph(String::from(input_file),
+    compiler::check_reduced_graph(String::from(input_file),
                              output.iter().map(|(x,y)|
                              (x.clone(), y.clone())).collect(),
-                             String::from(new_name), node));
+                             String::from(new_name),
+                             node)?;
 
     Ok(output)
 }
